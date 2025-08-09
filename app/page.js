@@ -56,7 +56,7 @@ export default function Home() {
       <div className="bg-white h-1 opacity-10"></div>
       <div className="container text-white mx-auto pb-32 pt-14 flex flex-col items-center justify-center">
         <h2 className="text-3xl font-bold text-center mb-8 ">Learn More about Us</h2>
-       <iframe width="560" height="315" src="https://www.youtube.com/embed/yoCehH1lnqY?si=bmiiERA0Kwtb5q3N" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+       <iframe width="560" height="315" src="https://www.youtube.com/embed/yoCehH1lnqY?si=bmiiERA0Kwtb5q3N" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
 
       </div>
 
