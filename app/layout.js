@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
       <body
         className="bg-[#000000] bg-[radial-gradient(#ffffff33_1px,#00091d_1px)] bg-[size:20px_20px] flex flex-col min-h-screen">
         <Navbar/>
-        <div className="flex-grow w-screen">
+        <div className="flex-grow">
         {children}
         </div>
         <Footer/>
