@@ -2,24 +2,26 @@
 import React, {useEffect} from 'react'
 import { useSession, signIn, signOut } from "next-auth/react"
 import { useRouter } from 'next/navigation'
+import Dashboard from '@/components/dashboard'
 
 
-const Dashboard = () => {
+const DashboardPage = () => {
     const {data: session} = useSession()
 
-    if(!session){
-        const router = useRouter()
-        router.push('/login')
-    }
+    // if(!session){
+    //     const router = useRouter()
+    //     router.push("/login")
+        
+    // }
 
   return (
     <div>
-      dashboard
+      <Dashboard/>
     </div>
   )
 }
 
-export default Dashboard
+export default DashboardPage
 
 
 

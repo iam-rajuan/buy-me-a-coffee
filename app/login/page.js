@@ -1,16 +1,21 @@
 "use client"
-import React from "react";
+import React, {useEffect} from "react";
 import { useSession, signIn, signOut } from "next-auth/react"
 import Github from "next-auth/providers/github";
 import { useRouter } from "next/navigation";
 
 const page = () => {
     const { data: session } = useSession();
-    if (session) {
-      const router = useRouter()
-      router.push("/dashnoard")
-    }
-
+    // if (session) {
+    //   const router = useRouter()
+    //   router.push("/dashboard")
+    // }
+    const router = useRouter();
+    useEffect(() => {
+        if (session) {
+            router.push("/dashboard");
+        }
+    }, [session, router]);
   return (
     <div className="container text-white py-14 mx-auto">
       <h2 className="text-white text-3xl text-center font-bold ">
