@@ -3,6 +3,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useSession, signOut } from "next-auth/react";
 import Link from "next/link";
+import Image from "next/image";
 
 const Navbar = () => {
   const { data: session } = useSession();
@@ -13,10 +14,7 @@ const Navbar = () => {
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target)
-      ) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setDropdownOpen(false);
       }
     };
@@ -59,7 +57,13 @@ const Navbar = () => {
           className="flex items-center font-bold text-lg hover:opacity-80 transition"
         >
           <span>Buy Me Link Coffee</span>
-          <img src="/tea.gif" alt="logo" width={40} className="ml-2" />
+          <Image
+            src="/tea.gif"
+            alt="logo"
+            width={40}
+            height={40}
+            className="ml-2"
+          />
         </Link>
 
         {/* DESKTOP MENU */}
@@ -70,7 +74,8 @@ const Navbar = () => {
                 onClick={() => setDropdownOpen(!dropdownOpen)}
                 className="bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 flex items-center gap-2"
               >
-                Welcome, {session.user.email.split("@")[0]}
+                Welcome,&nbsp;
+                {session?.user?.email?.split("@")[0] || "User"}
                 <svg
                   className={`w-3 h-3 transform transition-transform ${
                     dropdownOpen ? "rotate-180" : "rotate-0"
@@ -102,7 +107,7 @@ const Navbar = () => {
                     </li>
                     <li>
                       <Link
-                        href={`/${session.user.name}`}
+                        href={`/${session?.user?.name || "profile"}`}
                         className="block px-4 py-2 hover:bg-gray-100"
                       >
                         Profile
@@ -131,6 +136,7 @@ const Navbar = () => {
 
         {/* MOBILE MENU TOGGLE */}
         <button
+          aria-label="Toggle navigation menu"
           className="md:hidden text-white focus:outline-none"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
@@ -140,7 +146,7 @@ const Navbar = () => {
 
       {/* MOBILE MENU */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-slate-800 border-t border-slate-700 animate-slide-down">
+        <div className="md:hidden bg-slate-800 border-t border-slate-700 animate-[slideDown_0.3s_ease-out]">
           <div className="px-4 py-3 space-y-2 flex flex-col">
             {session ? (
               <>
@@ -152,7 +158,7 @@ const Navbar = () => {
                   Dashboard
                 </Link>
                 <Link
-                  href={`/${session.user.name}`}
+                  href={`/${session?.user?.name || "profile"}`}
                   onClick={() => setMobileMenuOpen(false)}
                   className="hover:bg-slate-700 px-3 py-2 rounded-md"
                 >
